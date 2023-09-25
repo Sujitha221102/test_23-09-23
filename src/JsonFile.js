@@ -50,13 +50,12 @@ const JsonFile = () => {
         }
     }
 
-    function handleUpdate(id) {
-        const editData = data.find(item => item.id === id);
-        if (editData) {
+    function handleUpdate(data) {
+        if (data) {
             setInfo({
-                id: editData.id,
-                title: editData.title,
-                body: editData.body,
+                id: data.id,
+                title: data.title,
+                body: data.body,
                 buttonClicked: true,
             });
             setUpdating(true);
@@ -99,7 +98,7 @@ const JsonFile = () => {
                             <h4>Title : {item.title}</h4>
                             <p>Body : {item.body}</p>
                             <div className="contentButton">
-                                <button onClick={() => handleUpdate(item.id)}>Update</button>
+                                <button onClick={() => handleUpdate(item)}>Update</button>
                                 <button onClick={() => handleDelete(item.id)}>Delete</button>
                             </div>
                         </div>
