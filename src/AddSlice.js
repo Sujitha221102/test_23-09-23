@@ -2,9 +2,9 @@ import {createSlice} from '@reduxjs/toolkit'
 
 const initialState={
     value:{
-        id:'',
+        id:null,
         title:'',
-        description:'',
+        body:'',
         buttonClicked:false,
     }
 }
@@ -15,9 +15,15 @@ const AddSlice=createSlice({
     reducers:{
         add:(state,action)=>{
             state.value=action.payload
-        }
+        },
+        update: (state, action) => {
+            const index = state.value.findIndex(item => item.id === action.payload.id);
+            if (index !== -1) {
+              state.value[index] = action.payload;
+            }
+          },
     }
 
 })
-export const {add}=AddSlice.actions;
+export const {add,update}=AddSlice.actions;
 export default AddSlice.reducer;
